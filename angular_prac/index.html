@@ -8,7 +8,10 @@
     <script src="./test.js"></script>
     <title>Document</title>
 </head>
-<body ng-controller="myController"> 
+<body ng-controller="myController">
+    {{ name }} 
+    <!-- calling function -->
+    <p>{{ sayHello() }}</p>
     <input type="text" ng-model="num">
     <p>Number is {{num}}</p>
     <div ng-show="num">JO</div>
