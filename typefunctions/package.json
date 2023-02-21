@@ -1,0 +1,28 @@
+{
+  "name": "typefunctions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prettier-format": "prettier --config .prettierrc *.ts --write",
+    "lint": "eslint --ext .ts .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "eslint": "^8.34.0",
+    "husky": "^8.0.3",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.4",
+    "tsc-node": "^0.0.3",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1"
+  }
+}
