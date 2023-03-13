@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <form ng-submit="myFunc()">
+        <div class="container mt-5">
+            <h1 class="text-center">Hi Feedback Template For SIES</h1>
+            <div class="mb-3">
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea3" class="form-label">Enter name</label>
+                    <input class="form-control" id="exampleFormControlTextarea3" rows="3"
+                        ng-model="model.name"></textarea>
+
+                </div>
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+                    ng-model="model.email">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                    ng-model="model.feedback"></textarea>
+            </div>
+            <div class="mb-3 text-center">
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+    <p>{{myTxt}}</p>
+    <div class="container mt-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Feedback</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="d in arr">
+                    <th scope="row">{{$index}}</th>
+                    <td>{{d.name}}</td>
+                    <td>{{d.email}}</td>
+                    <td>{{d.feedback}}</td>
+                    <td><button type="submit" class="btn btn-danger" ng-click="deleteData(d.name)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script>
+        var app = angular.module('myApp', []);
+
+        app.service('hexafy', function () {
+            this.myFunc = function (x) {
+                return x.toString(16);
+            }
+        });
+        app.controller('myCtrl', function ($scope, hexafy) {
+            $scope.hex = hexafy.myFunc(255);
+            $scope.nameReg = /^[a-zA-Z ]{3,}$/;
+            $scope.emailReg = /^[a-zA-Z0-9]{9,}@gst\.sies\.edu\.in$/;
+            $scope.feedbackReg = /^[a-zA-Z ]{5,}$/;
+            var model = {
+                name: "",
+                email: "",
+                feedback: "",
+            }
+            $scope.model = model;
+            $scope.deleteData = function (value) {
+                $scope.arr = $scope.arr.filter(function (item) {
+                    return item.name !== value
+                })
+            }
+            $scope.myFunc = function () {
+                if (!$scope.nameReg.test($scope.model.name)) {
+                    alert("Name Is Not Valid")
+                    return
+                }
+                if (!$scope.emailReg.test($scope.model.email)) {
+                    alert("Email Is Not Valid")
+                    return
+                }
+                if (!$scope.feedbackReg.test($scope.model.feedback)) {
+                    alert("Feedback Is Not Valid")
+                    return
+                }
+                $scope.arr.push($scope.model);
+                console.log($scope.model, $scope.arr)
+                var model = {
+                    name: "",
+                    email: "",
+                    feedback: "",
+                }
+                $scope.model = model;
+            }
+            $scope.arr = [
+                {
+                    name: "TEST",
+                    email: "TEST@gmail.com",
+                    feedback: "TEST FEEDBACK1",
+                },
+                {
+                    name: "TEST2",
+                    email: "TEST2@gmail.com",
+                    feedback: "TEST FEEDBACK12",
+                },
+                {
+                    name: "TEST4",
+                    email: "TEST4@gmail.com",
+                    feedback: "TEST FEEDBACK14",
+                },
+                {
+                    name: "TEST6",
+                    email: "TEST6@gmail.com",
+                    feedback: "TEST FEEDBACK16",
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
