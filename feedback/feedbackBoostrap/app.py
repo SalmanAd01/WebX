@@ -42,7 +42,7 @@ def feed():
         )
         db.session.add(user)
         db.session.commit()
-        return "Done"
+        return "Feedback Submitted"
     return render_template('index.html')
 
 

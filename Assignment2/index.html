@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Factory</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    </script>
+    <script>
+        var application = angular.module('myApp', []);
+        application.value("pi", 3.14)
+        application.factory('MyFactoryService', function (pi) {
+            var factory = {};
+            factory.area = function (r) {
+                return pi * r * r;
+            };
+
+            return factory;
+        });
+
+        application.controller('thisapp', function (
+            $scope, MyFactoryService) {
+            $scope.result = function () {
+                $scope.results =
+                    MyFactoryService.area($scope.num1)
+            };
+
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Factory Value</h1>
+    <div ng-app="myApp" ng-controller="thisapp">
+        <p>
+            Enter the Radius:
+            <input type="number" ng-model="num1" />
+            <br />
+        </p>
+        <button ng-click="result()">Area</button>
+        <p>Results: {{results}}
+    </div>
+</body>
+
+</html>
