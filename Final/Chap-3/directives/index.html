@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- angular min js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-app="Myapp" ng-controller="MainCtrl">
+    <div>
+        {{message}}
+    </div>
+    <!-- 10 Directives -->
+    <div ng-init="s=1">
+        {{s}}
+    </div>
+    <div ng-repeat="item in [10,2,4,5]">
+        {{item}}
+    </div>
+    <div>
+        input: <input type="text" ng-model="input">
+        <br>
+        output: {{input}}
+    </div>
+    <div>
+        <button ng-click="count=count+1">Click me!</button>
+        {{count}}
+    </div>
+    <div>
+        Check to show hidden text: <input type="checkbox" ng-model="checked">
+        <div ng-show="checked">
+            <h1>Hidden text</h1>
+        </div>
+    </div>
+    <div>
+        <input type="name" ng-model="nameval">
+        <h1 ng-if="nameval=='s'">{{nameval}}</h1>
+    </div>
+    <div>
+        <input type="name" ng-model="switctest">
+        <h1 ng-switch="switctest">
+            <span ng-switch-when="s">salman</span>
+            <span ng-switch-when="a">adhikari</span>
+            <span ng-switch-default>default</span>
+        </h1>
+    </div>
+    <div>
+        <input type="text" ng-model="showTest">
+        <h1 ng-show="showTest">show</h1>
+        <h1 ng-hide="showTest">hide</h1>
+    </div>
+
+    <!-- Custom Directive -->
+
+    <div>
+        <h1>Custom Directive</h1>
+        <my-directive></my-directive>
+    </div>
+
+</body>
+<script src="./script.js"></script>
+
+</html>
