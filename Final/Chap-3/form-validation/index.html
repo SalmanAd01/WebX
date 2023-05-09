@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- angular min js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-app="Myapp">
+    <div ng-controller="MainCtrl">
+        {{message}}
+    </div>
+    <form name="myform">
+        <label for="name">Enter Name {{username}}</label>
+        <input type="text" id="name" name="username" ng-model="username" required>
+        <br>
+        <p ng-show="myform.username.$pristine || myform.username.$invalid">
+            Name is Required
+        </p>
+        
+        <label for="email">Enter Email {{email}}</label>
+        <input type="email" id="email" name="email" ng-model="email" required>
+        <br>
+        <p ng-show="myform.email.$pristine || myform.email.$invalid">
+            Email is Required
+        </p>
+
+
+    </form>
+
+</body>
+<script src="./script.js"></script>
+
+</html>
