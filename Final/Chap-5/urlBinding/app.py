@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,url_for,redirect
 
 app = Flask(__name__)
 
@@ -17,9 +17,9 @@ def admin(adminname):
 @app.route('/user/<type>/<name>')
 def user_type(type, name):
     if type == 'admin':
-        return f'Hello Admin {name}'
+        return redirect(url_for('admin', adminname=name))
     elif type == 'user':
-        return f'Hello User {name}'
+        return redirect(url_for('user', username=name))
     else:
         return f'Hello {name}'
 if __name__ == '__main__':
